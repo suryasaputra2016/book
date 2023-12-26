@@ -79,9 +79,10 @@ const showDialog = document.querySelector('dialog + button');
 
 const newTitle = document.querySelector('dialog #new-title');
 const newAuthor = document.querySelector('dialog #new-author');
-const newHasRead = document.querySelector('dialog #has-read');
+const newHasRead = document.querySelector('dialog #new-has-read');
 
-const addBook = document.querySelector('dialog button');
+const addBook = document.querySelector('dialog .add');
+const cancelBook = document.querySelector('dialog .cancel');
 
 showDialog.addEventListener('click', () => {
     dialog.showModal();
@@ -90,15 +91,32 @@ showDialog.addEventListener('click', () => {
 let deleteButtons = document.querySelectorAll('.delete-book');
 
 addBook.addEventListener('click', (event) => {
-    let newBook = new Book(newTitle.value, newAuthor.value, newHasRead.checked);
-    myLibrary.push(newBook);
-    showLibrary();
+    
+
+    if (newTitle.checkValidity() && newAuthor.checkValidity()) {
+        event.preventDefault();
+
+        let newBook = new Book(newTitle.value, newAuthor.value, newHasRead.checked);
+        myLibrary.push(newBook);
+        showLibrary();
+    
+        newTitle.value = '';
+        newAuthor.value = '';
+        newHasRead.checked = false;  
+    
+        dialog.close();
+    }
+
+})
+
+cancelBook.addEventListener('click', (event)=> {
+    event.preventDefault();
+
     newTitle.value = '';
     newAuthor.value = '';
     newHasRead.checked = false;
 
-    event.preventDefault();
-    dialog.close();
+    dialog.close()
 })
 
 function deleteBook(event) {
