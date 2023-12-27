@@ -34,8 +34,8 @@ function showLibrary() {
         author.textContent = book.author;
 
         let hasRead = document.createElement('p');
-        hasRead.classList.add('hasRead');
-        hasRead.textContent = book.hasRead ? 'read' : 'not yet read';
+        hasRead.classList.add(book.hasRead ? 'hasRead' : 'hasNotRead');
+        hasRead.textContent = book.hasRead ? 'finished' : 'unfinished';
 
         let toggleRead = document.createElement('button');
         toggleRead.classList.add('toggle-read');
@@ -43,7 +43,7 @@ function showLibrary() {
 
         let deleteBook = document.createElement('button');
         deleteBook.classList.add('delete-book');
-        deleteBook.textContent = 'delete book';
+        deleteBook.textContent = 'Delete book';
 
         card.appendChild(bookId);
         card.appendChild(title);
@@ -74,8 +74,19 @@ function showLibrary() {
 
 }
 
+const book1 = new Book("Focault's Pendulum", "Umberto Eco", false);
+const book2 = new Book("Cryptonomicon", "Neal Stephenson", true);
+const book3 = new Book("Harry Potter and The Sorcerer's Stone", "J. K. Rowling", true)
+const book4 = new Book("Norwegian Woods", "Haruki Murakami", true)
+
+addBookToLibrary(book1);
+addBookToLibrary(book2);
+addBookToLibrary(book3);
+addBookToLibrary(book4);
+showLibrary()
+
 const dialog = document.querySelector('dialog');
-const showDialog = document.querySelector('dialog + button');
+const showDialog = document.querySelector('.add-book');
 
 const newTitle = document.querySelector('dialog #new-title');
 const newAuthor = document.querySelector('dialog #new-author');

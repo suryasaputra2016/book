@@ -3,6 +3,22 @@ body {
     font-family: Helvetica, sans-serif;
 }
 
+.head {
+    display: flex;
+    justify-content: space-around;
+    padding: 0 2rem;
+    align-items: center;
+}
+
+h1 {
+    flex: 1;
+}
+
+.add-book {
+    padding: 0 4rem;
+    height: 2.5rem;
+}
+
 dialog {
     padding: 2rem 4rem;
 }
@@ -40,9 +56,11 @@ dialog button {
 
 .cards {
     padding: 2rem;
-    
+
+    text-align: center;
+
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 30rem));
     gap: 2rem;
 }
 
@@ -50,4 +68,42 @@ dialog button {
     padding: 1rem 2rem;
     min-width: fit-content;
     border: 2px solid black;
+    position: relative;
+}
+
+.bookId {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    margin: 0.5rem;
+}
+
+.title {
+    font-size: larger;
+    font-weight: bold;;
+}
+
+.author {
+    font-size: larger;
+}
+
+.hasRead {
+    color: green;
+    font-size: small;
+}
+
+.hasNotRead {
+    color: red;
+    font-size: small;
+}
+
+.toggle-read {
+    width: 8rem;
+    margin-bottom: 1rem;
+    margin-right: 4rem;
+}
+
+.delete-book {
+    width: 8rem;
 }
